@@ -90,7 +90,8 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  
+  
 }
 
 // Function for getting a random element from an array
@@ -100,7 +101,15 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  // ask the user to enter how many characters they want their password to be
+  var userChar = prompt("How many characters would you like your password to be?");
 
+  // check if the number is higher than 10
+  if (userChar < 10) {
+    userChar = prompt("Please enter a number greater than 10");
+  }
+
+  console.log(userChar);
 }
 
 // Get references to the #generate element
