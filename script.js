@@ -102,6 +102,21 @@ function getPasswordOptions() {
 
 }
 
+// Get special character preference from user
+let includeSpecial = confirm("Do you want to include special characters in your password?");
+
+// Get number preference from user
+let includeNumbers = confirm("Do you want to include numbers in your password?");
+
+// Get lowercase preference from user
+let includeLowercase = confirm("Do you want to include lowercase letters in your password?");
+
+// Get uppercase preference from user
+let includeUppercase = confirm("Do you want to include uppercase letters in your password?");
+
+// Initialise allCharacters as an empty string
+let allCharacters = "";
+
 // Function for getting a random element from an array
 function getRandom(arr) {
 
@@ -112,6 +127,8 @@ function generatePassword() {
 
   // Initialise password as empty string
   let password = "";
+
+  
 }
 
 // Get references to the #generate element
