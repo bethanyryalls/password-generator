@@ -143,7 +143,7 @@ function generatePassword() {
   let includeUppercase = confirm("Do you want to include uppercase letters in your password?");
 
   // Initialise allCharacters as an empty string
-  let allCharacters = "";
+  let allCharacters = " ";
 
   // If special characters requested, add to allCharacters
   if (includeSpecial) {
@@ -169,6 +169,8 @@ function generatePassword() {
     password += getRandom(numericCharacters);
   }
 
+  allCharacters = allCharacters.split(',').join('');
+
   // Generating the password
 
   for (let i = password.length; i < passwordLength; i++) {
@@ -179,9 +181,11 @@ function generatePassword() {
     password += randomCharacter;
   }
 
-  // // Randomise generate password
-  // let shuffledPassword = shuffle(password);
-  // password = shuffledPassword;
+  // Randomise generate password
+  let shuffledPassword = shuffle(password);
+  password = shuffledPassword;
+
+  
   console.log(allCharacters);
   // Return the generated password
   return password;
