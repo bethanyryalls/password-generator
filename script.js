@@ -95,7 +95,7 @@ var shufflePassword;
 function getPasswordOptions() {
 
   // Get password length from user
-  let passwordLength = prompt("How many characters do you want your password to be?");
+  passwordLength = prompt("How many characters do you want your password to be?");
   passwordLength = parseInt(passwordLength);
 
   // Make sure password length is between 10 and 64 characters
@@ -105,11 +105,21 @@ function getPasswordOptions() {
 
 }
 
+// Function to shuffle the characters in a string
+function shuffle(string) {
+  return string.split('').sort(() => Math.random() -0.5).join('');
+}
+
  
 
 // Function for getting a random element from an array
 function getRandom(arr) {
 
+  // Pick random index from array
+  let randomIndex = Math.floor(Math.random() * arr.length);
+
+  // Return element at that index
+  return arr[randomIndex];
 }
 
 // Function to generate password with user input
@@ -138,49 +148,48 @@ function generatePassword() {
   // If special characters requested, add to allCharacters
   if (includeSpecial) {
     allCharacters += specialCharacters;
-    let specialIndex = Math.floor(Math.random() * specialCharacters.length);
-    password += specialCharacters[specialIndex];
+    password += getRandom(specialCharacters);
   }
 
   // If lowercase requested, add to allCharacters
   if (includeLowercase) {
     allCharacters += lowerCasedCharacters;
-    let lowercaseIndex = Math.floor(Math.random() * lowerCasedCharacters.length);
-    password += lowerCasedCharacters[lowercaseIndex];
+    password += getRandom(lowerCasedCharacters);
   }
 
   // If uppercase requested, add to allCharacters
   if (includeUppercase) {
     allCharacters += upperCasedCharacters;
-    let uppercaseIndex = Math.floor(Math.random() * upperCasedCharacters.length);
-    password += upperCasedCharacters[uppercaseIndex];
+    password += getRandom(upperCasedCharacters);
   }
 
   // If numbers requested, add to allCharacters
   if (includeNumbers) {
     allCharacters += numericCharacters;
-    let numberIndex = Math.floor(Math.random() * numericCharacters.length);
-    password += numericCharacters[numberIndex];
+    password += getRandom(numericCharacters);
   }
 
   // Generating the password
 
   for (let i = password.length; i < passwordLength; i++) {
     //Pick random character from allCharacters
-    let randomIndex = Math.floor(Math.random() * allCharacters.length);
-    let randomCharacter = allCharacters[randomIndex];
+    let randomCharacter = getRandom(allCharacters);
 
     // Add character to the password
     password += randomCharacter;
   }
 
-  // Randomise generate password
-  let shuffledPassword = password.sort(() => Math.random() -0.5);
-  password = shuffledPassword;
-
+  // // Randomise generate password
+  // let shuffledPassword = shuffle(password);
+  // password = shuffledPassword;
+  console.log(allCharacters);
   // Return the generated password
   return password;
+
+  
 }
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
