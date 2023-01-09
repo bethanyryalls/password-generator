@@ -112,11 +112,18 @@ function getRandom(arr) {
   return arr[randElement];
 }
 
+function getRandomChar(arrays) {
+  let randChar = Math.floor(Math.random() * arrays.length);
+
+  return arrays[randChar];
+}
+
 // Function for adding random element to array at a random point
 function placeStringInArray(arr) {
   
   for (var i = 0; i < arr.length; i++) {
-    arr[i] = getRandom(specialCharacters);
+    const testArr = [getRandom(specialCharacters), getRandom(numericCharacters), getRandom(lowerCasedCharacters), getRandom(upperCasedCharacters)];
+    arr[i] = getRandomChar(testArr);
   }
 
   return arr;
@@ -143,26 +150,26 @@ function generatePassword() {
 
   
 
-  // ask the user to enter how many characters they want their password to be
-  var passwordLength = prompt("How many characters would you like your password to be?");
+  // // ask the user to enter how many characters they want their password to be
+  // var passwordLength = prompt("How many characters would you like your password to be?");
 
-  // create empty string to store the password
-  var newPassword = "";
+  // // create empty string to store the password
+  // var newPassword = "";
 
-  // create empty string to store possible characters
-  var possibleChar = [];
+  // // create empty string to store possible characters
+  // var possibleChar = [];
 
-  // let modifiedArray = placeStringInArray();
-  // console.log(modifiedArray);
+  // // let modifiedArray = placeStringInArray();
+  // // console.log(modifiedArray);
 
   const testArray = new Array(6);
   console.log(placeStringInArray(testArray));
 
-  // Ask user for which types of characters to include in the password
-  var includeSpecial = confirm("Do you want to include special characters in your password?");
-  var includeUpper = confirm("Do you want to include uppercase letters in your password?");
-  var includeLower = confirm("Do you want to include lowercase letters in your password?");
-  var includeNumber = confirm("Do you want to include numbers in your password?");
+  // // Ask user for which types of characters to include in the password
+  // var includeSpecial = confirm("Do you want to include special characters in your password?");
+  // var includeUpper = confirm("Do you want to include uppercase letters in your password?");
+  // var includeLower = confirm("Do you want to include lowercase letters in your password?");
+  // var includeNumber = confirm("Do you want to include numbers in your password?");
 
 }
 
