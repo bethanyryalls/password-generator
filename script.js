@@ -128,7 +128,33 @@ function generatePassword() {
   // Initialise password as empty string
   let password = "";
 
-  
+  // If special characters requested, add to allCharacters
+  if (includeSpecial) {
+    allCharacters += specialCharacters;
+    let specialIndex = Math.floor(Math.random() * specialCharacters.length);
+    password += specialCharacters[specialIndex];
+  }
+
+  // If lowercase requested, add to allCharacters
+  if (includeLowercase) {
+    allCharacters += lowerCasedCharacters;
+    let lowercaseIndex = Math.floor(Math.random() * lowerCasedCharacters.length);
+    password += lowerCasedCharacters[lowercaseIndex];
+  }
+
+  // If uppercase requested, add to allCharacters
+  if (includeUppercase) {
+    allCharacters += upperCasedCharacters;
+    let uppercaseIndex = Math.floor(Math.random() * upperCasedCharacters.length);
+    password += upperCasedCharacters[uppercaseIndex];
+  }
+
+  // If numbers requested, add to allCharacters
+  if (includeNumbers) {
+    allCharacters += numericCharacters;
+    let numberIndex = Math.floor(Math.random() * numericCharacters.length);
+    password += numericCharacters[numberIndex];
+  }
 }
 
 // Get references to the #generate element
