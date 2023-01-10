@@ -233,8 +233,6 @@ function generatePassword() {
   let shuffledPassword = shuffle(password);
   password = shuffledPassword;
 
-
-  console.log(allCharacters);
   // Return the generated password
   return password;
 
