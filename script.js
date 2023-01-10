@@ -91,28 +91,49 @@ var upperCasedCharacters = [
 var passwordLength;
 var shufflePassword;
 
-// Function to prompt user for password options
+// FUNCTION to prompt user for password options
 function getPasswordOptions() {
 
-  // Get password length from user
-  passwordLength = prompt("How many characters do you want your password to be?");
-  passwordLength = parseInt(passwordLength);
+  while (true) {
 
-  // Make sure password length is between 10 and 64 characters
-  //SCRIPT GOES HERE
+    // Get password length from user
+    passwordLength = prompt("How many characters do you want your password to be?");
+
+    // Check if input is empty
+    if (passwordLength === "") {
+      alert("Please enter a value.");
+      continue;
+    }
+
+    // Check if input is a number
+    if (isNaN(passwordLength)) {
+      alert("Please enter a valid number.");
+      continue;
+    }
+
+    // Convert input to a number
+    passwordLength = parseInt(passwordLength);
+
+    // Check if number is between 10 and 64
+    if (passwordLength < 10 || passwordLength > 64) {
+      alert("Password length must be between 10 and 64 characters.");
+      continue;
+    }
+
+    // Exit the loop if a valid number is entered
+    break;
+  }
 
   return passwordLength;
 
 }
 
-// Function to shuffle the characters in a string
+// FUNCTION to shuffle the characters in a string
 function shuffle(string) {
-  return string.split('').sort(() => Math.random() -0.5).join('');
+  return string.split('').sort(() => Math.random() - 0.5).join('');
 }
 
- 
-
-// Function for getting a random element from an array
+// FUNCTION for getting a random element from an array
 function getRandom(arr) {
 
   // Pick random index from array
@@ -122,7 +143,7 @@ function getRandom(arr) {
   return arr[randomIndex];
 }
 
-// Function to generate password with user input
+// FUNCTION to generate password with user input
 function generatePassword() {
 
   getPasswordOptions();
@@ -143,7 +164,7 @@ function generatePassword() {
   let includeUppercase = confirm("Do you want to include uppercase letters in your password?");
 
   // Initialise allCharacters as an empty string
-  let allCharacters = " ";
+  let allCharacters = "";
 
   // If special characters requested, add to allCharacters
   if (includeSpecial) {
@@ -157,11 +178,11 @@ function generatePassword() {
     password += getRandom(lowerCasedCharacters);
   }
 
-    // If numbers requested, add to allCharacters
-    if (includeNumbers) {
-      allCharacters += numericCharacters;
-      password += getRandom(numericCharacters);
-    }
+  // If numbers requested, add to allCharacters
+  if (includeNumbers) {
+    allCharacters += numericCharacters;
+    password += getRandom(numericCharacters);
+  }
 
   // If uppercase requested, add to allCharacters
   if (includeUppercase) {
@@ -174,9 +195,12 @@ function generatePassword() {
   // Removing all commas from allCharacters
   allCharacters = allCharacters.split(',').join('');
 
-  // Adding in one comma to replace special character removed
-  var commaChar = ",";
-  allCharacters += commaChar;
+  // Adding in one comma to replace special character removed, if special character chosen
+  if (includeSpecial) {
+    var commaChar = ",";
+    allCharacters += commaChar;
+  }
+  
 
   // Generating the password
 
@@ -192,12 +216,12 @@ function generatePassword() {
   let shuffledPassword = shuffle(password);
   password = shuffledPassword;
 
-  
+
   console.log(allCharacters);
   // Return the generated password
   return password;
 
-  
+
 }
 
 
