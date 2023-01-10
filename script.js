@@ -157,19 +157,26 @@ function generatePassword() {
     password += getRandom(lowerCasedCharacters);
   }
 
+    // If numbers requested, add to allCharacters
+    if (includeNumbers) {
+      allCharacters += numericCharacters;
+      password += getRandom(numericCharacters);
+    }
+
   // If uppercase requested, add to allCharacters
   if (includeUppercase) {
     allCharacters += upperCasedCharacters;
     password += getRandom(upperCasedCharacters);
   }
 
-  // If numbers requested, add to allCharacters
-  if (includeNumbers) {
-    allCharacters += numericCharacters;
-    password += getRandom(numericCharacters);
-  }
 
+
+  // Removing all commas from allCharacters
   allCharacters = allCharacters.split(',').join('');
+
+  // Adding in one comma to replace special character removed
+  var commaChar = ",";
+  allCharacters += commaChar;
 
   // Generating the password
 
