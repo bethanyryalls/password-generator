@@ -148,20 +148,37 @@ function generatePassword() {
 
   getPasswordOptions();
 
+  // Set variable to check for number of character sets chosen
+  let numberOfCharSets = 0;
+
   // Initialise password as empty string
   let password = "";
 
   // Get special character preference from user
   let includeSpecial = confirm("Do you want to include special characters in your password?");
+  // if chosen add to numberOfCharSets
+  if (includeSpecial) numberOfCharSets++;
 
   // Get number preference from user
   let includeNumbers = confirm("Do you want to include numbers in your password?");
+  // if chosen add to numberOfCharSets
+  if (includeNumbers) numberOfCharSets++;
 
   // Get lowercase preference from user
   let includeLowercase = confirm("Do you want to include lowercase letters in your password?");
+  // if chosen add to numberOfCharSets
+  if (includeLowercase) numberOfCharSets++;
 
   // Get uppercase preference from user
   let includeUppercase = confirm("Do you want to include uppercase letters in your password?");
+  // if chosen add to numberOfCharSets
+  if (includeUppercase) numberOfCharSets++;
+
+  // If none chosen go back and ask again
+  if (numberOfCharSets == 0) {
+    alert("Please choose at least one character type to add");
+    return generatePassword();
+  }
 
   // Initialise allCharacters as an empty string
   let allCharacters = "";
