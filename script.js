@@ -207,8 +207,6 @@ function generatePassword() {
     password += getRandom(upperCasedCharacters);
   }
 
-
-
   // Removing all commas from allCharacters
   allCharacters = allCharacters.split(',').join('');
 
@@ -217,10 +215,12 @@ function generatePassword() {
     var commaChar = ",";
     allCharacters += commaChar;
   }
-  
+
 
   // Generating the password
 
+  // Starting at the length of the password (based on which sets they've chosen)
+  // Add a random character until the set password length
   for (let i = password.length; i < passwordLength; i++) {
     //Pick random character from allCharacters
     let randomCharacter = getRandom(allCharacters);
@@ -229,7 +229,7 @@ function generatePassword() {
     password += randomCharacter;
   }
 
-  // Randomise generate password
+  // Randomise generated password
   let shuffledPassword = shuffle(password);
   password = shuffledPassword;
 
